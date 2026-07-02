@@ -1,19 +1,11 @@
-import { redirect } from "next/navigation";
 import { Flame } from "lucide-react";
 
-import { auth } from "@/auth";
 import { AnalyzeHeader } from "@/components/analyze-header";
 import { AnalyzeForm } from "./analyze-form";
 
 const checks = ["Bug detection", "Complexity", "Security", "Optimization"];
 
-export default async function AnalyzePage() {
-  const session = await auth();
-
-  if (!session?.user) {
-    redirect("/login?callbackUrl=/analyze");
-  }
-
+export default function AnalyzePage() {
   return (
     <main className="min-h-screen overflow-hidden bg-[#050608] text-zinc-100">
       <div className="pointer-events-none fixed inset-0 surface-grid opacity-60" />

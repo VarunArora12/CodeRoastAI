@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { signOut } from "next-auth/react";
 import { ArrowLeft, Braces } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -23,14 +22,6 @@ export function ResultsHeader() {
         <div className="flex items-center gap-2">
           <Button asChild size="sm" variant="secondary">
             <Link href="/analyze">New analysis</Link>
-          </Button>
-          <Button
-            size="sm"
-            type="button"
-            variant="ghost"
-            onClick={() => signOut({ callbackUrl: "/" })}
-          >
-            Log out
           </Button>
         </div>
       </div>

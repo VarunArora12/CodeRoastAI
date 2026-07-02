@@ -23,6 +23,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { Textarea } from "@/components/ui/textarea";
 import {
   CodeAnalysisSchema,
+  analysisStorageKey,
   saveAnalysisToStorage,
   type AnalyzeErrorResponse,
   languageExtensions,
@@ -93,6 +94,7 @@ export function AnalyzeForm() {
   const lineCount = useMemo(() => Math.max(code.split(/\r?\n/).length, 1), [code]);
 
   useEffect(() => {
+    window.localStorage.removeItem(analysisStorageKey);
     setCode("");
     setLanguage(DEFAULT_LANGUAGE);
     setError(null);
@@ -150,6 +152,9 @@ export function AnalyzeForm() {
       }
 
       saveAnalysisToStorage(parsed.data, language);
+      setCode("");
+      setLanguage(DEFAULT_LANGUAGE);
+      setError(null);
       router.push("/results");
     } catch (requestError) {
       if (requestError instanceof DOMException && requestError.name === "AbortError") {

@@ -2,7 +2,6 @@ import { GoogleGenAI } from "@google/genai";
 import { NextResponse } from "next/server";
 import { z } from "zod";
 
-import { auth } from "@/auth";
 import { getGeminiModel } from "@/lib/gemini";
 import { parseAnalysisResponse } from "@/lib/analysis";
 
@@ -18,12 +17,6 @@ function jsonError(message: string, status: number, code?: string) {
 }
 
 export async function POST(request: Request) {
-  const session = await auth();
-
-  if (!session?.user) {
-    return jsonError("Please log in to analyze code.", 401, "UNAUTHORIZED");
-  }
-
   let payload: unknown;
 
   try {

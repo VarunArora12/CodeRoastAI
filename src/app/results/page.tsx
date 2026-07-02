@@ -1,16 +1,7 @@
-import { redirect } from "next/navigation";
-
-import { auth } from "@/auth";
 import { ResultsHeader } from "@/components/results-header";
 import { ResultsView } from "./results-view";
 
-export default async function ResultsPage() {
-  const session = await auth();
-
-  if (!session?.user) {
-    redirect("/login?callbackUrl=/results");
-  }
-
+export default function ResultsPage() {
   return (
     <main className="min-h-screen overflow-hidden bg-[#050608] text-zinc-100">
       <div className="pointer-events-none fixed inset-0 surface-grid opacity-60" />

@@ -59,7 +59,6 @@ CodeRoast AI is an AI-powered code review platform that analyzes JavaScript and 
 ### Backend
 - Next.js API Routes
 - Gemini AI API
-- Prisma
 - Zod
 
 ### Deployment
@@ -77,8 +76,6 @@ src/
  ├── services/
  ├── types/
  └── utils/
-
-prisma/
 
 public/
 ```
@@ -158,18 +155,15 @@ npm start
 
 ```env
 GEMINI_API_KEY=
-DATABASE_URL=
-NEXTAUTH_SECRET=
-NEXTAUTH_URL=
+GEMINI_MODEL=gemini-2.5-flash
 ```
 
-> Only add the variables your project actually uses.
+`GEMINI_MODEL` is optional. If omitted, the app uses the default model configured in `src/lib/gemini.ts`.
 
 ---
 
 ## 🎯 Future Improvements
 
-- User authentication
 - Analysis history
 - PDF report export
 - Multi-language support

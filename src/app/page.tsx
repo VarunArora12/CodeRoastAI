@@ -1,20 +1,17 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
-import { auth } from "@/auth";
 import { FadeIn } from "@/components/fade-in";
 import { SiteNav } from "@/components/site-nav";
 import { Button } from "@/components/ui/button";
 
-export default async function Home() {
-  const session = await auth();
-
+export default function Home() {
   return (
     <main className="min-h-screen overflow-hidden bg-[#050608] text-zinc-100">
       <div className="pointer-events-none fixed inset-0 surface-grid opacity-70" />
       <div className="pointer-events-none fixed inset-0 bg-[linear-gradient(180deg,rgba(139,92,246,0.16),transparent_28%),linear-gradient(90deg,rgba(34,211,238,0.08),transparent_34%,rgba(244,114,182,0.07))]" />
 
-      <SiteNav initialAuthenticated={Boolean(session?.user)} />
+      <SiteNav />
 
       <section className="relative">
         <div className="relative mx-auto grid min-h-[calc(100vh-4rem)] max-w-7xl items-center gap-12 px-4 py-14 sm:px-6 sm:py-20 lg:grid-cols-[0.95fr_1.05fr] lg:px-8">
@@ -28,8 +25,8 @@ export default async function Home() {
             </p>
             <div className="mt-8">
               <Button asChild size="lg">
-                <Link href={session?.user ? "/analyze" : "/login"}>
-                  {session?.user ? "Analyze Code" : "Log in to Analyze"}
+                <Link href="/analyze">
+                  Analyze Code
                   <ArrowRight />
                 </Link>
               </Button>
@@ -67,8 +64,8 @@ export default async function Home() {
       <footer className="relative border-t border-white/10 bg-black/20 py-8">
         <div className="mx-auto flex max-w-7xl flex-col gap-4 px-4 text-sm text-zinc-500 sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
           <p>CodeRoast AI</p>
-          <Link href={session?.user ? "/analyze" : "/login"} className="transition-colors hover:text-zinc-200">
-            {session?.user ? "Analyze" : "Log in"}
+          <Link href="/analyze" className="transition-colors hover:text-zinc-200">
+            Analyze
           </Link>
         </div>
       </footer>
