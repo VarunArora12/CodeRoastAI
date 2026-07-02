@@ -1,72 +1,88 @@
 # 🚀 CodeRoast AI
 
-CodeRoast AI is an AI-powered code review platform that analyzes JavaScript and TypeScript code using Google's Gemini AI. It detects bugs, security vulnerabilities, performance issues, code smells, complexity, and best-practice violations while generating optimized code with detailed explanations.
+> AI-powered code review platform built with Next.js 15, TypeScript, and Google's Gemini AI.
+
+🌐 **Live Demo:** https://code-roast-arlhnfs4v-varunarora9011-4154s-projects.vercel.app/
+
+📂 **GitHub Repository:** https://github.com/VarunArora12/CodeRoastAI
+
+CodeRoast AI analyzes JavaScript, TypeScript, and Python code using Google's Gemini AI. It detects bugs, security vulnerabilities, performance bottlenecks, code smells, and best-practice violations while generating optimized code with detailed explanations.
 
 ---
 
-## ✨ Features
+# ✨ Features
 
 - 🤖 AI-powered code analysis using Gemini AI
-- 🐞 Bug detection with detailed explanations
+- 🐞 Intelligent bug detection with explanations
 - 🔒 Security vulnerability detection
 - ⚡ Time & Space Complexity analysis
-- 📊 Overall Code Quality Score
-- 📈 Score breakdown (Security, Performance, Readability, Maintainability, Reliability)
-- 📝 AI-generated summary
+- 📊 Overall Roast Score (0–100)
+- 📈 Detailed score breakdown
+- 📝 AI-generated code summary
 - 💡 Optimized code generation
 - 🎯 Suggested fixes and best practices
+- 🚨 Severity-based issue detection
+- 📍 Line number highlighting
 - 🌙 Modern responsive dark UI
-- 🚀 Built with Next.js 15 and TypeScript
-- ☁️ Ready for Vercel deployment
+- 📋 Copy optimized code
+- 🚀 Fully deployable on Vercel
 
 ---
 
-## 🖥️ Demo
+# 🖥️ Demo
+
+## 🌐 Live Application
+
+https://code-roast-arlhnfs4v-varunarora9011-4154s-projects.vercel.app/
 
 ### Landing Page
 - Modern SaaS-style landing page
-- Clean code editor preview
-- Direct "Analyze Code" workflow
+- Interactive code preview
+- One-click Analyze workflow
 
 ### Code Analyzer
-- Paste JavaScript/TypeScript code
-- Analyze using Gemini AI
-- Loading animations
-- Automatic redirect to Results page
+- Paste JavaScript, TypeScript, or Python code
+- AI-powered analysis using Gemini
+- Loading animation
+- Automatic redirect to Results Dashboard
 
 ### Results Dashboard
 - Roast Score
+- Score Breakdown
 - AI Summary
-- Performance Analysis
 - Bug Detection
 - Security Analysis
-- Code Smells
-- Best Practices
-- Suggested Fixes
+- Performance Analysis
+- Complexity Analysis
+- Suggested Improvements
 - Optimized Code
+- Why This Change? Explanation
 
 ---
 
-## 🛠️ Tech Stack
+# 🛠️ Tech Stack
 
-### Frontend
+## Frontend
+
 - Next.js 15
 - React
 - TypeScript
 - Tailwind CSS
 - Framer Motion
 
-### Backend
+## Backend
+
 - Next.js API Routes
-- Gemini AI API
+- Google Gemini AI
 - Zod
 
-### Deployment
+## Deployment
+
 - Vercel
 
 ---
 
-## 📂 Project Structure
+# 📂 Project Structure
 
 ```
 src/
@@ -82,12 +98,12 @@ public/
 
 ---
 
-## ⚙️ Installation
+# ⚙️ Installation
 
 Clone the repository
 
 ```bash
-git clone https://github.com/yourusername/CodeRoastAI.git
+git clone https://github.com/VarunArora12/CodeRoastAI.git
 ```
 
 Move into the project
@@ -112,6 +128,7 @@ Add your Gemini API Key
 
 ```env
 GEMINI_API_KEY=YOUR_API_KEY
+GEMINI_MODEL=gemini-2.5-flash
 ```
 
 Run locally
@@ -128,13 +145,15 @@ http://localhost:3000
 
 ---
 
-## 🚀 Build
+# 🚀 Production Build
+
+Build
 
 ```bash
 npm run build
 ```
 
-Start production
+Start
 
 ```bash
 npm start
@@ -142,40 +161,40 @@ npm start
 
 ---
 
-## 🌍 Deploy on Vercel
+# 🌍 Deploy on Vercel
 
-1. Push the repository to GitHub.
+1. Fork or clone this repository.
 2. Import the project into Vercel.
 3. Add the required environment variables.
 4. Deploy.
 
 ---
 
-## 📌 Environment Variables
+# 📌 Environment Variables
 
 ```env
 GEMINI_API_KEY=
 GEMINI_MODEL=gemini-2.5-flash
 ```
 
-`GEMINI_MODEL` is optional. If omitted, the app uses the default model configured in `src/lib/gemini.ts`.
+`GEMINI_MODEL` is optional. If omitted, the application uses the default model configured in the project.
 
 ---
 
-## 🎯 Future Improvements
+# 🎯 Roadmap
 
-- Analysis history
-- PDF report export
-- Multi-language support
-- Repository analysis
-- Pull Request reviews
-- AI chat for code improvements
-- Team dashboard
-- Saved reports
+- 📄 PDF report export
+- 🌍 Multi-language support
+- 📂 GitHub repository analysis
+- 🔀 Pull Request reviews
+- 🤖 AI chat for code improvements
+- 📊 Saved analysis history
+- 👥 Team dashboard
+- ☁️ Cloud sync
 
 ---
 
-## 📸 Screenshots
+# 📸 Screenshots
 
 Add screenshots of:
 
@@ -187,22 +206,25 @@ Add screenshots of:
 
 ---
 
-## 🤝 Contributing
+# 🤝 Contributing
 
 Contributions, feature requests, and bug reports are welcome.
 
-Fork the repository and submit a Pull Request.
+1. Fork the repository.
+2. Create a new branch.
+3. Commit your changes.
+4. Open a Pull Request.
 
 ---
 
-## 📄 License
+# 📄 License
 
 This project is licensed under the MIT License.
 
 ---
 
-## 👨‍💻 Author
+# 👨‍💻 Author
 
 **Varun Arora**
 
-Built with ❤️ using Next.js, TypeScript, and Gemini AI.
+Built with ❤️ using Next.js, TypeScript, and Google's Gemini AI.
