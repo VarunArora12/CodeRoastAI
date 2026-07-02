@@ -10,9 +10,10 @@ import { Button } from "@/components/ui/button";
 type CopyCodeBlockProps = {
   code: string;
   filename?: string;
+  language?: string;
 };
 
-export function CopyCodeBlock({ code, filename }: CopyCodeBlockProps) {
+export function CopyCodeBlock({ code, filename, language }: CopyCodeBlockProps) {
   const [copied, setCopied] = useState(false);
 
   async function handleCopy() {
@@ -46,7 +47,7 @@ export function CopyCodeBlock({ code, filename }: CopyCodeBlockProps) {
           {copied ? "Copied" : "Copy"}
         </Button>
       </div>
-      <CodeBlock code={code} />
+      <CodeBlock code={code} language={language} />
     </motion.div>
   );
 }

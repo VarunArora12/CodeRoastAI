@@ -22,6 +22,7 @@ export const AnalysisIssueSchema = z.object({
   severity: IssueSeveritySchema,
   lineNumber: z.number().int().positive().nullable(),
   category: IssueCategorySchema,
+  confidence: z.number().min(0).max(100),
 });
 
 export const ScoreBreakdownSchema = z.object({
@@ -104,6 +105,23 @@ function clampScore(value: unknown, fallback = 70): number {
   }
 
   return Math.min(100, Math.max(0, Math.round(parsed)));
+}
+
+function normalizeConfidence(value: unknown, fallback = 85): number {
+  const parsed =
+    typeof value === "number"
+      ? value
+      : typeof value === "string"
+        ? Number.parseFloat(value.replace("%", ""))
+        : Number.NaN;
+
+  if (!Number.isFinite(parsed)) {
+    return fallback;
+  }
+
+  const percent = parsed <= 1 ? parsed * 100 : parsed;
+
+  return Math.min(100, Math.max(0, Math.round(percent)));
 }
 
 export function normalizeSeverity(value: unknown): IssueSeverity {
@@ -195,6 +213,9 @@ function normalizeIssue(raw: unknown): AnalysisIssue {
     severity: normalizeSeverity(issue.severity),
     lineNumber: normalizeLineNumber(issue.lineNumber),
     category: normalizeCategory(issue.category),
+    confidence: normalizeConfidence(
+      issue.confidence ?? issue.confidencePercent ?? issue.probability,
+    ),
   };
 }
 
@@ -238,6 +259,7 @@ function collectLegacyIssues(raw: Record<string, unknown>): AnalysisIssue[] {
           severity: group.category === "Security" ? "High" : "Medium",
           lineNumber: null,
           category: group.category,
+          confidence: 85,
         });
       } else {
         issues.push(normalizeIssue({ ...item, category: group.category }));

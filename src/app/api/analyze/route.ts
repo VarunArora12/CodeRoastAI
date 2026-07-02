@@ -72,6 +72,7 @@ ISSUE RULES:
 - category: exactly one of "Bug", "Security", "Performance", "Maintainability", "Readability", "Best Practice".
 - Do NOT use "Reliability" or any other category label.
 - lineNumber: positive integer line in the submitted code, or null if not identifiable.
+- confidence: integer from 0 to 100 indicating how confident you are that the issue is real.
 - explanation: 1–3 sentences describing impact and why it matters.
 - Include ALL meaningful findings. Do not invent issues that aren't present.
 
@@ -98,7 +99,8 @@ The JSON MUST match this schema exactly:
       "explanation": string,
       "severity": "Critical" | "High" | "Medium" | "Low",
       "lineNumber": number | null,
-      "category": "Bug" | "Security" | "Performance" | "Maintainability" | "Readability" | "Best Practice"
+      "category": "Bug" | "Security" | "Performance" | "Maintainability" | "Readability" | "Best Practice",
+      "confidence": number
     }
   ],
   "optimizedCode": string,

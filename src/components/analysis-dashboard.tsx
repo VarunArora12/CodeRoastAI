@@ -23,6 +23,7 @@ import {
   languageExtensions,
   type CodeAnalysis,
   type IssueCategory,
+  type IssueSeverity,
 } from "@/lib/analysis";
 import { getScoreTheme } from "@/lib/score";
 
@@ -56,6 +57,46 @@ function EmptySectionMessage({ message }: { message: string }) {
       {message}
     </div>
   );
+}
+
+function IssuesSummary({ issues }: { issues: CodeAnalysis["issues"] }) {
+  const counts: Array<{ label: string; value: number }> = [
+    { label: "Total Issues", value: issues.length },
+    { label: "Critical", value: countIssuesBySeverity(issues, "Critical") },
+    { label: "High", value: countIssuesBySeverity(issues, "High") },
+    { label: "Medium", value: countIssuesBySeverity(issues, "Medium") },
+    { label: "Low", value: countIssuesBySeverity(issues, "Low") },
+  ];
+
+  return (
+    <FadeIn delay={0.11}>
+      <section className="glass-panel rounded-md p-5 sm:p-6">
+        <SectionHeader icon={ShieldAlert} title="Issues Found" delay={0.11} />
+        <div className="grid grid-cols-2 gap-3 sm:grid-cols-5">
+          {counts.map((item) => (
+            <div
+              className="rounded-md border border-white/10 bg-white/[0.04] p-4"
+              key={item.label}
+            >
+              <p className="text-xs uppercase tracking-[0.14em] text-zinc-500">
+                {item.label}
+              </p>
+              <p className="mt-2 text-2xl font-semibold text-white">
+                {item.value}
+              </p>
+            </div>
+          ))}
+        </div>
+      </section>
+    </FadeIn>
+  );
+}
+
+function countIssuesBySeverity(
+  issues: CodeAnalysis["issues"],
+  severity: IssueSeverity,
+) {
+  return issues.filter((issue) => issue.severity === severity).length;
 }
 
 function IssueSection({
@@ -119,6 +160,8 @@ export function AnalysisDashboard({ analysis, language }: AnalysisDashboardProps
       </FadeIn>
 
       <ScoreBreakdownPanel breakdown={analysis.breakdown} />
+
+      <IssuesSummary issues={analysis.issues} />
 
       <div className="grid gap-4 sm:grid-cols-2">
         <FadeIn delay={0.08}>
@@ -219,6 +262,7 @@ export function AnalysisDashboard({ analysis, language }: AnalysisDashboardProps
           <CopyCodeBlock
             code={analysis.optimizedCode}
             filename={`optimized-code.${extension}`}
+            language={language}
           />
         </section>
       </FadeIn>

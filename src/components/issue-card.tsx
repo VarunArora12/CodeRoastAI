@@ -46,6 +46,9 @@ export function IssueCard({ issue, index }: IssueCardProps) {
         <span className="rounded-md border border-violet-300/20 bg-violet-400/10 px-2 py-0.5 text-[11px] text-violet-100">
           {issue.category}
         </span>
+        <span className="rounded-md border border-cyan-300/20 bg-cyan-400/10 px-2 py-0.5 text-[11px] text-cyan-100">
+          {issue.confidence}% confidence
+        </span>
       </div>
       <h3 className="mt-3 text-sm font-medium text-white">{issue.title}</h3>
       <p className="mt-2 text-sm leading-6 text-zinc-400">{issue.explanation}</p>
